@@ -1,4 +1,3 @@
-
 # Django ORM practise project
 
 Simple overview of use/purpose.
@@ -25,7 +24,8 @@ Simple overview of use/purpose.
 ```
 code blocks for commands
 ```
-
+## Database ERD
+![ERD](https://github.com/diek/Django_ORM_Examples_PracticeProblems/blob/main/docs/ERD%20Library.png?raw=true)
 ## Help
 
 Any advise for common problems or issues.
@@ -37,8 +37,8 @@ command to run if program contains helper info
 
 Contributors names and contact info
 
-ex. Dominique Pizzie  
-ex. [@DomPizzie](https://twitter.com/dompizzie)
+ex. Fred Flintstone 
+
 
 ## Version History
 * 0.1
@@ -46,7 +46,7 @@ ex. [@DomPizzie](https://twitter.com/dompizzie)
 
 ## License
 
-This project is licensed under the [NAME HERE] License - see the LICENSE.md file for details
+This project is licensed under the MIT License - see the LICENSE.md file for details
 
 ## Acknowledgments
 
