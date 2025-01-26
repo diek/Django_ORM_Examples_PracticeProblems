@@ -1,4 +1,4 @@
-CREATE USER web_app_user WITH PASSWORD 'mayhew';
+CREATE USER web_app_user WITH PASSWORD 'Peanut*Butter12';
 CREATE DATABASE web_app_user;
 ALTER ROLE web_app_user SET client_encoding TO 'utf8';
 ALTER ROLE web_app_user SET default_transaction_isolation TO 'read committed';
