@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>{{ problem }}</h2>
+    <ul>
+{% for item in last_joined %}
+    <li>Object: {{item}} Join Date:{{item.join_date}}</li>
+{% endfor %}
+</ul>
+{% endblock content %}

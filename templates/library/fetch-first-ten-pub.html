@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>{{ problem }}</h2>
+    <ul>
+{% for publisher in publishers %}
+    <li><strong>Publisher:</strong> {{ publisher.publishing_company }}</li>
+{% endfor %}
+</ul>
+{% endblock content %}

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>{{ problem|linebreaksbr }}</h2>
+<ul>
+{% for author in authors2013 %}
+    <li><strong>Authors:</strong> {{ author.first_name }} <strong>{{ author.join_date }}</strong></li>
+{% endfor %}
+</ul>
+{% endblock content %}
