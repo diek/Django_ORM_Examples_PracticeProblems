@@ -18,4 +18,21 @@ urlpatterns = [
         name="fetch_last_author_joined",
     ),
     path("fetch-2013/", views.fetch_2013, name="fetch_2013"),
+    path("fetch-total-price/", views.fetch_total_price, name="fetch_total_price"),
+    path("fetch-books-by-a/", views.fetch_books_by_a, name="fetch_books_by_a"),
+    path(
+        "fetch-total-price-authors134/",
+        views.fetch_total_price_authors134,
+        name="fetch_total_price_authors134",
+    ),
+    path(
+        "fetch-authors-followers/",
+        views.fetch_authors_followers,
+        name="fetch_authors_followers",
+    ),
+    path(
+        "fetch-authors-Penguin/",
+        views.fetch_authors_Penguin,
+        name="fetch_authors_Penguin",
+    ),
 ]

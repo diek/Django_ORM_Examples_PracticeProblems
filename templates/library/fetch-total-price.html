@@ -2,9 +2,5 @@
 
 {% block content %}
 <h2>{{ problem }}</h2>
-<ul>
-{% for book in all_books %}
-    <li>{{ book.title }}</li>
-{% endfor %}
-</ul>
+<h2>Total Price: {{ books.total_book_price }}</h2>
 {% endblock content %}

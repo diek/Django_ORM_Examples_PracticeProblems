@@ -1,7 +1,6 @@
 from django.shortcuts import render
 import datetime
-from django.db.models import Count, Avg, Sum, Max, Min
-from django.db.models import Q, F
+from django.db.models import Q, F, Count, Avg, Sum, Max, Min
 from .models import Author, Book, Publisher
 
 
@@ -110,17 +109,71 @@ def fetch_2013(request):
     return render(request, "library/fetch-2013.html", context)
 
 
-#
-# Fetch list of all authors who joined after or in year 2013
-# Fetch total price of all the books written by authors with popularity score 7 or higher.
-# Fetch list of titles of all books written by authors whose first name starts with ‘A’. The result should contain a list of the titles of every book. Not a list of tuples.
-# Get total price of all the books written by author with pk in list [1, 3, 4]
-# Produce a list of all the authors along with their recommender.
-# Produce list of all authors who published their book by publisher pk = 1, output list should be ordered by first name.
-# Create three new users and add in the followers of the author with pk = 1.
-# Set the followers list of the author with pk = 2, with only one user.
-# Add new users in followers of the author with pk = 1.
-# Remove one user from the followers of the author with pk = 1.
+def fetch_total_price(request):
+    books = (
+        Book.objects.all()
+        .filter(author__popularity_score__gte=7)
+        .aggregate(total_book_price=Sum("price"))
+    )
+    problem = "12. Fetch total price of all the books written by authors with popularity score 7 or higher."
+    context = {"books": books, "problem": problem}
+    return render(request, "library/fetch-total-price.html", context)
+
+
+def fetch_books_by_a(request):
+    a_authored_books = (
+        Book.objects.all()
+        .filter(author__first_name__startswith="A")
+        .values_list("title", flat=True)
+    )
+    problem = "13. Fetch list of titles of all books written by authors whose 1st name starts with ‘A’.\n"
+    problem += " The result should contain a list of the titles of every book. Not a list of tuples."
+    context = {"a_authored_books": a_authored_books, "problem": problem}
+    return render(request, "library/fetch-books-by-a.html", context)
+
+
+def fetch_total_price_authors134(request):
+    list = [1, 3, 4]
+    # total_price = Book.objects.all().filter(author__pk__in=[1, 3, 4]).aggregate("price")
+    specific_authors = Book.objects.all().filter(author__in=list).order_by("author_id")
+    total_price = specific_authors.aggregate(total_book_price=Sum("price"))
+    problem = "14. Get total price of all the books written by author with pk in list [1, 3, 4]"
+
+    context = {
+        "specific_authors": specific_authors,
+        "total_price": total_price,
+        "problem": problem,
+    }
+    return render(request, "library/fetch-total-price-authors134.html", context)
+
+
+def fetch_authors_followers(request):
+    authors_recommenders = Author.objects.all()
+    problem = "15. Produce a list of all the authors along with their recommender."
+    context = {
+        "authors_recommenders": authors_recommenders,
+        "problem": problem,
+    }
+    return render(request, "library/fetch-authors-followers.html", context)
+
+
+def fetch_authors_Penguin(request):
+    authors_Penguin = Book.objects.filter(publisher=37).order_by("author__first_name")
+    problem = "16. Produce list of all authors who published their book by \n"
+    problem += "publisher pk = 37, output list should be ordered by first name."
+    context = {
+        "authors_Penguin": authors_Penguin,
+        "problem": problem,
+    }
+    return render(request, "library/fetch-authors-Penguin.html", context)
+
+
+# 17. Create three new users and add in the followers of the author with pk = 1.
+# 18. Set the followers list of the author with pk = 2, with only one user.
+# 19. Add new users in followers of the author with pk = 1.
+# 20. Remove one user from the followers of the author with pk = 1.
+
+
 # Get first names of all the authors, whose user with pk = 1 is following. ( Without Accessing Author.objects manager )
 # Fetch list of all authors who wrote a book with “tle” as part of Book Title.
 # Fetch the list of authors whose names start with ‘A’ case insensitive, and either their popularity score is greater than 5 or they have joined after 2014. with Q objects.

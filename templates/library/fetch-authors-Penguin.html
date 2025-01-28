@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>{{ problem|linebreaksbr }}</h2>
+<ul>
+{% for book in authors_Penguin %}
+    <li><strong>Author:</strong> {{ book.author.author_name }} <strong>Publisher: </strong>{{ book.publisher }}</li>
+{% endfor %}
+</ul>
+{% endblock content %}

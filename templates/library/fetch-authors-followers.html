@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>{{ problem|linebreaksbr }}</h2>
+<ul>
+{% for author in authors_recommenders %}
+    <li><strong>Author:</strong> {{ author.author_name }} <strong>Recommended By: </strong>{{ author.recommended_by }}</li>
+{% endfor %}
+</ul>
+{% endblock content %}

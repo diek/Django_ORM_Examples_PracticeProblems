@@ -20,6 +20,10 @@ class Author(models.Model):
         "Reader", related_name="followed_authors", related_query_name="followed_authors"
     )
 
+    @property
+    def author_name(self):
+        return self.first_name + " " + self.last_name
+
     def __str__(self):
         return self.first_name + " " + self.last_name
 
