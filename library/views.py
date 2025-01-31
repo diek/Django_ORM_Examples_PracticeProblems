@@ -1,7 +1,7 @@
 from django.shortcuts import render
 import datetime
 from django.db.models import Q, F, Count, Avg, Sum, Max, Min
-from .models import Author, Book, Publisher
+from .models import Author, Book, Publisher, Reader
 
 
 def fetch_all_books(request):
@@ -168,7 +168,25 @@ def fetch_authors_Penguin(request):
     return render(request, "library/fetch-authors-Penguin.html", context)
 
 
-# 17. Create three new users and add in the followers of the author with pk = 1.
+def fetch_author_pk1_followers(request):
+    if Reader.objects.filter(reader__startswith="user"):
+        msg = "Users already created."
+    else:
+        user1 = Reader.objects.create(reader="user1", email="user1@wackymail.com")
+        user2 = Reader.objects.create(reader="user2", email="user2@wackymail.com")
+        user3 = Reader.objects.create(reader="user3", email="user3@wackymail.com")
+        Author.objects.get(pk=1).followers.add(user1, user2, user3)
+        msg = "Users created successfully."
+
+    problem = (
+        "17. Create three new users and add in the followers of the author with pk = 1."
+    )
+    author = Author.objects.get(pk=1)
+    context = {"author": author, "problem": problem, "msg": msg}
+    return render(request, "library/fetch-author-pk1-followers.html", context)
+
+
+#
 # 18. Set the followers list of the author with pk = 2, with only one user.
 # 19. Add new users in followers of the author with pk = 1.
 # 20. Remove one user from the followers of the author with pk = 1.

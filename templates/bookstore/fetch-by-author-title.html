@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>{{ problem|linebreaksbr }}</h2>
+
+<h2>Find all books by author</h2>
+<ul>
+{% for book in keegan_books %}
+    <li>{{ book }}</li>
+{% endfor %}
+</ul>
+
+<h2>Find all authors of a book</h2>
+<ul>
+{% for author in american_sniper %}
+    <li>{{ author }}</li>
+{% endfor %}
+</ul>
+{% endblock content %}

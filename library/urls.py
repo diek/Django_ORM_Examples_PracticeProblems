@@ -35,4 +35,9 @@ urlpatterns = [
         views.fetch_authors_Penguin,
         name="fetch_authors_Penguin",
     ),
+    path(
+        "fetch-author-pk1-followers",
+        views.fetch_author_pk1_followers,
+        name="fetch_author_pk1_followers",
+    ),
 ]

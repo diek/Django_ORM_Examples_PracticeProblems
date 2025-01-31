@@ -49,9 +49,7 @@ DJANGO_APPS = [
     "django.contrib.staticfiles",
 ]
 
-PROJECT_APPS = [
-    "library.apps.LibraryConfig",
-]
+PROJECT_APPS = ["library.apps.LibraryConfig", "bookstore.apps.BookstoreConfig"]
 
 UTIL_APPS = ["django_extensions"]
 
@@ -91,6 +89,7 @@ WSGI_APPLICATION = "config.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 FIXTURE_DIRS = [BASE_DIR / "fixtures"]
+
 DATABASES = {
     "default": dj_database_url.config()
     if getenv("DATABASE_URL")
