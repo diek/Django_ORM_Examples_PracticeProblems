@@ -24,9 +24,14 @@ Simple overview of use/purpose.
 ```
 code blocks for commands
 ```
-## Database ERD
+## Database Library ERD
 ![ERD](https://github.com/diek/Django_ORM_Examples_PracticeProblems/blob/main/docs/ERD%20Library.png?raw=true)
+
+## Database Bookstore ERD
+![ERD](https://github.com/diek/Django_ORM_Examples_PracticeProblems/blob/main/docs/ERD%20Bookstore.png?raw=true)
+
 ## Help
+
 
 Any advise for common problems or issues.
 ```
